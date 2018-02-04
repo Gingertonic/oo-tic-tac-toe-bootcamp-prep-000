@@ -38,28 +38,28 @@ class TicTacToe
     index.between?(0,8) && !position_taken?(index)
   end
 
-  def turn(board)
+  def turn
     puts "Please enter 1-9:"
     i = gets.strip
     index = input_to_index(i)
-    m = valid_move?(board, index)
+    m = valid_move?(index)
     if m == true
-      move(board, index, current_player(board))
+      move(index, current_player)
     else m == false
       until m == true
         puts "Sorry, that was an invalid move. Please enter 1-9:"
-        display_board(board)
+        display_board
         i = gets.strip
         index = input_to_index(i)
-        m = valid_move?(board, index)
-        move(board, index, current_player(board))
+        m = valid_move?(index)
+        move(index, current_player)
       end
     end
   end
 
-  def turn_count(board)
+  def turn_count
     count = 0
-    board.each do |i|
+    @board.each do |i|
       if i == "X" || i == "O"
         count += 1
       end
