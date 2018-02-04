@@ -3,7 +3,7 @@ class TicTacToe
     @board = Array.new(9, " ")
   end
 
-  def WIN_COMBINATIONS = [
+WIN_COMBINATIONS = [
   [0,1,2], #top row
   [3,4,5], #middle row
   [6,7,8], #bottom row
@@ -13,7 +13,7 @@ class TicTacToe
   [0,4,8], #diagonal back
   [6,4,2], #diagonal forward
 ]
-end
+
 
   def display_board
     puts " #{@board[0]} | #{@board[1]} | #{board[2]} "
