@@ -114,7 +114,7 @@ class TicTacToe
 
   def play
     until over? == true
-      display_board
+      # display_board
       turn
     end
     if draw? == true
