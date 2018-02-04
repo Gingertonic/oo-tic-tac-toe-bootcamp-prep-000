@@ -67,15 +67,15 @@ class TicTacToe
     count
   end
 
-  def current_player(board)
-    turn_count(board).even? ? "X" : "O"
+  def current_player
+    turn_count.even? ? "X" : "O"
   end
 
-  def won?(board)
+  def won?
     WIN_COMBINATIONS.each do |win_combination|
       result = []
       win_combination.each do |i|
-        result << board[i]
+        result << @board[i]
       end
       if result == ["X","X","X"] || result == ["O","O","O"]
         return win_combination
@@ -84,25 +84,25 @@ class TicTacToe
       return false
   end
 
-  def full?(board)
-    board.all? {|i| i == "X" || i == "O"}
+  def full?
+    @board.all? {|i| i == "X" || i == "O"}
   end
 
-  def draw?(board)
-    (full?(board) && !won?(board)) ? true : false
+  def draw?
+    (full? && !won?) ? true : false
   end
 
-  def over?(board)
-    (won?(board) || draw?(board)) ? true : false
+  def over?
+    (won?|| draw?) ? true : false
   end
 
-  def winner(board)
-    if won?(board)
-      test = won?(board)[0]
+  def winner
+    if won?
+      test = won?[0]
       # board[test] == "X" ? "X" : "O"
-      if board[test] == "X"
+      if @board[test] == "X"
         return "X"
-      elsif board[test] == "O"
+      elsif @board[test] == "O"
         return "O"
       end
     else
@@ -111,15 +111,15 @@ class TicTacToe
   end
 
 
-  def play(board)
-    until over?(board) == true
-      display_board(board)
-      turn(board)
+  def play
+    until over? == true
+      display_board
+      turn
     end
-    if draw?(board) == true
+    if draw? == true
          puts "Cat's Game!"
-    else won?(board)
-       puts "Congratulations #{winner(board)}!"
+    else won?
+       puts "Congratulations #{winner}!"
      end
   end
 
